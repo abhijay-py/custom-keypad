@@ -226,4 +226,15 @@
 		(remove_unused_layers no)
 		(uuid "e0f59779-092e-420f-9e1b-8fc98687c866")
 	)
+	(model "${KIPRJMOD}/3D Models/61300511121.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
 )

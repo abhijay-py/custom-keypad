@@ -263,6 +263,18 @@
 		(uuid "daae7fc9-c2c1-401e-887b-61c84c733107")
 	)
 	(model "222AMVBAR.stp"
+		(hide yes)
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+	(model "${KIPRJMOD}/3D Models/222AMVBAR.stp"
 		(offset
 			(xyz 0 0 0)
 		)

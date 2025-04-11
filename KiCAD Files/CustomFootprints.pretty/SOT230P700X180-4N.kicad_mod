@@ -233,4 +233,15 @@
 		(thermal_bridge_angle 45)
 		(uuid "53d82f0f-021f-45b4-b8c6-271b15f168a8")
 	)
+	(model "${KIPRJMOD}/3D Models/AZ1117IH-3.3TRG1.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
 )

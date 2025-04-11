@@ -64,6 +64,7 @@
 			)
 		)
 	)
+	(clearance 0.01)
 	(attr through_hole)
 	(fp_line
 		(start -4.825 -3.03)
@@ -461,6 +462,17 @@
 	(model "UJ32-C-H-G-H2-SMT-TR.stp"
 		(offset
 			(xyz 0 -4.959999964 1.809999916)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+	(model "${KIPRJMOD}/3D Models/UJ32-C-H-G-H2-SMT-TR.stp"
+		(offset
+			(xyz 0 -5 1.6)
 		)
 		(scale
 			(xyz 1 1 1)

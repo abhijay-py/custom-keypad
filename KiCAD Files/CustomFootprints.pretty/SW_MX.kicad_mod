@@ -272,4 +272,38 @@
 		(remove_unused_layers no)
 		(uuid "08c4db56-130f-41f2-afe2-65896e70fe6c")
 	)
+	(model "${KIPRJMOD}/3D Models/asm_mx_asm_PCB.stp"
+		(hide yes)
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+	(model "${KIPRJMOD}/3D Models/asm_mx_asm_PLATE.stp"
+		(offset
+			(xyz 0.3 0.27 4)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 180 -90)
+		)
+	)
+	(model "${KIPRJMOD}/3D Models/ImageToStl.com_Simple-CherryMX-Keycap.stp"
+		(offset
+			(xyz 1.5 2.5 10)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 -90)
+		)
+	)
 )
