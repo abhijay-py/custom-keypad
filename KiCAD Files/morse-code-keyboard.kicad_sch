@@ -1931,6 +1931,16 @@
 	)
 	(wire
 		(pts
+			(xy 248.92 34.29) (xy 248.92 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "033c988b-c6b2-4078-8506-67b6a52aa682")
+	)
+	(wire
+		(pts
 			(xy 66.04 93.98) (xy 66.04 92.71)
 		)
 		(stroke
@@ -2011,7 +2021,7 @@
 	)
 	(wire
 		(pts
-			(xy 176.53 34.29) (xy 234.95 34.29)
+			(xy 176.53 34.29) (xy 248.92 34.29)
 		)
 		(stroke
 			(width 0)
@@ -2121,6 +2131,16 @@
 	)
 	(wire
 		(pts
+			(xy 234.95 31.75) (xy 234.95 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4c85daca-eb31-44ae-8cd9-99b26117d433")
+	)
+	(wire
+		(pts
 			(xy 176.53 52.07) (xy 180.34 52.07)
 		)
 		(stroke
@@ -2168,16 +2188,6 @@
 			(type default)
 		)
 		(uuid "63e17210-f68f-41a3-a353-5e1e3d6cd096")
-	)
-	(wire
-		(pts
-			(xy 248.92 59.69) (xy 248.92 31.75)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "67f7f889-9b70-4c68-a6c5-0a1060343900")
 	)
 	(wire
 		(pts
@@ -2261,16 +2271,6 @@
 	)
 	(wire
 		(pts
-			(xy 248.92 59.69) (xy 234.95 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "adf95482-5ecd-441e-becd-769eed3f80cf")
-	)
-	(wire
-		(pts
 			(xy 170.18 62.23) (xy 180.34 62.23)
 		)
 		(stroke
@@ -2291,7 +2291,7 @@
 	)
 	(wire
 		(pts
-			(xy 176.53 31.75) (xy 248.92 31.75)
+			(xy 176.53 31.75) (xy 234.95 31.75)
 		)
 		(stroke
 			(width 0)
@@ -2341,16 +2341,6 @@
 	)
 	(wire
 		(pts
-			(xy 234.95 54.61) (xy 234.95 34.29)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "dfbaec06-65b8-49a6-9b02-e23d6dd6a335")
-	)
-	(wire
-		(pts
 			(xy 105.41 93.98) (xy 100.33 93.98)
 		)
 		(stroke
@@ -2368,6 +2358,16 @@
 			(type default)
 		)
 		(uuid "e98677f2-f3fb-4f62-9818-63e48dbd0440")
+	)
+	(wire
+		(pts
+			(xy 248.92 59.69) (xy 234.95 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fa318293-8ec6-46c5-84ff-6e65b8530f6f")
 	)
 	(rectangle
 		(start 12.7 78.74)
@@ -2444,29 +2444,6 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "USB+"
-		(shape input)
-		(at 200.66 59.69 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 0 0 0 1)
-			)
-			(justify right)
-		)
-		(uuid "4af6d469-e138-4dab-b42e-36e82f0ae505")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 192.2924 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
 				(hide yes)
 			)
 		)
@@ -2632,29 +2609,6 @@
 			)
 		)
 	)
-	(global_label "USB-"
-		(shape input)
-		(at 201.93 54.61 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 0 0 0 1)
-			)
-			(justify right)
-		)
-		(uuid "8eb39b1a-a345-489c-a4c5-312b2f845e62")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 193.5624 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "PA1{slash}Dash"
 		(shape input)
 		(at 116.84 106.68 0)
@@ -2678,6 +2632,29 @@
 			)
 		)
 	)
+	(global_label "USB-"
+		(shape input)
+		(at 200.66 59.69 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 0 1)
+			)
+			(justify right)
+		)
+		(uuid "bce55087-2a80-4593-b630-fa21771ff3b0")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 192.2924 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "PA1{slash}Caps Lock"
 		(shape input)
 		(at 149.86 93.98 0)
@@ -2697,6 +2674,29 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "USB+"
+		(shape input)
+		(at 201.93 54.61 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 0 1)
+			)
+			(justify right)
+		)
+		(uuid "e2e2b27d-b606-40ac-bd38-0e4f0b106686")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 193.5624 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -4663,7 +4663,7 @@
 			)
 		)
 		(instances
-			(project "projec"
+			(project "morse-code-keyboard"
 				(path "/8e7e72ac-bc91-4085-88f6-4508f4467c79"
 					(page "2")
 				)
