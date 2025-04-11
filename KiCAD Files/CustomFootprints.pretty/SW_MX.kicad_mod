@@ -297,7 +297,7 @@
 	)
 	(model "${KIPRJMOD}/3D Models/ImageToStl.com_Simple-CherryMX-Keycap.stp"
 		(offset
-			(xyz 1.5 2.5 10)
+			(xyz 1.5 2.5 5)
 		)
 		(scale
 			(xyz 1 1 1)
