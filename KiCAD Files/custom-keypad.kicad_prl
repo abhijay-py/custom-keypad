@@ -74,7 +74,7 @@
     "ssh_key": ""
   },
   "meta": {
-    "filename": "morse-code-keyboard.kicad_prl",
+    "filename": "custom-keypad.kicad_prl",
     "version": 3
   },
   "project": {

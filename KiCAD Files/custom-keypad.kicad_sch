@@ -261,6 +261,247 @@
 				)
 			)
 		)
+		(symbol "CustomSymbols:EN11-HSM1BF20"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at 21.59 12.7 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Value" "EN11-HSM1BF20"
+				(at 21.59 10.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Footprint" "EN11HSM1BF20"
+				(at 21.59 -89.84 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 21.59 -189.84 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Description" "Mechanical Encoder Rotary Incremental Flat 0.018N.m Straight Gray Digital Square Wave 20PPR Through Hole PC Pin"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Height" "26.2"
+				(at 21.59 -389.84 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Part Number" "858-EN11-HSM1BF20"
+				(at 21.59 -489.84 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/BI-Technologies-TT-Electronics/EN11-HSM1BF20?qs=%252BUYXD5bnyXp4Uf1MU7v3zw%3D%3D"
+				(at 21.59 -589.84 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Name" "TT Electronics"
+				(at 21.59 -689.84 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Part_Number" "EN11-HSM1BF20"
+				(at 21.59 -789.84 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(symbol "EN11-HSM1BF20_1_1"
+				(rectangle
+					(start 5.08 7.62)
+					(end 20.32 -7.62)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 10.16 -12.7 90)
+					(length 5.08)
+					(name "A1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "A1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 -12.7 90)
+					(length 5.08)
+					(name "B1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "B1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 -12.7 90)
+					(length 5.08)
+					(name "C1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "C1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 12.7 270)
+					(length 5.08)
+					(name "D1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "D1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 12.7 270)
+					(length 5.08)
+					(name "E1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "E1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 0 0)
+					(length 5.08)
+					(name "MH1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "MH1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 25.4 0 180)
+					(length 5.08)
+					(name "MH2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "MH2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "CustomSymbols:GND"
 			(power)
 			(pin_numbers hide)
@@ -1869,6 +2110,18 @@
 		(color 0 0 0 0)
 		(uuid "afb2bc51-4303-4e9e-b6ec-166769dfbf34")
 	)
+	(junction
+		(at 193.04 102.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b90566b2-3516-48d8-8cbe-edc416ca4ef3")
+	)
+	(junction
+		(at 193.04 110.49)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "eb21e2fe-bf15-48cc-8e00-5ff9db0d6d1c")
+	)
 	(no_connect
 		(at 176.53 57.15)
 		(uuid "0f8e7ca6-0728-416a-8e09-ba13520adaa7")
@@ -1896,6 +2149,10 @@
 	(no_connect
 		(at 176.53 54.61)
 		(uuid "4a136ad0-e0be-4784-aeff-dcc442502d95")
+	)
+	(no_connect
+		(at 156.21 102.87)
+		(uuid "54876ccc-d84e-4adc-b418-257d2845830b")
 	)
 	(no_connect
 		(at 176.53 41.91)
@@ -2091,6 +2348,16 @@
 	)
 	(wire
 		(pts
+			(xy 181.61 102.87) (xy 193.04 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "422b28af-4061-48d2-8106-15c4610a4f56")
+	)
+	(wire
+		(pts
 			(xy 180.34 62.23) (xy 182.88 62.23)
 		)
 		(stroke
@@ -2111,7 +2378,7 @@
 	)
 	(wire
 		(pts
-			(xy 134.62 93.98) (xy 134.62 92.71)
+			(xy 30.48 105.41) (xy 30.48 104.14)
 		)
 		(stroke
 			(width 0)
@@ -2181,7 +2448,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 93.98) (xy 134.62 93.98)
+			(xy 35.56 105.41) (xy 30.48 105.41)
 		)
 		(stroke
 			(width 0)
@@ -2198,6 +2465,16 @@
 			(type default)
 		)
 		(uuid "8315390b-fe95-4b01-8575-c745b5f55560")
+	)
+	(wire
+		(pts
+			(xy 193.04 110.49) (xy 205.74 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "93399015-aaec-4ceb-a665-e1bc22294b10")
 	)
 	(wire
 		(pts
@@ -2271,6 +2548,16 @@
 	)
 	(wire
 		(pts
+			(xy 193.04 102.87) (xy 205.74 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b0d6d596-5e45-4c8c-a945-b6ed5cb0bb15")
+	)
+	(wire
+		(pts
 			(xy 170.18 62.23) (xy 180.34 62.23)
 		)
 		(stroke
@@ -2331,6 +2618,16 @@
 	)
 	(wire
 		(pts
+			(xy 162.56 90.17) (xy 162.56 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cb298de0-4fd1-4e9d-b48d-bd6ea7606893")
+	)
+	(wire
+		(pts
 			(xy 101.6 106.68) (xy 101.6 105.41)
 		)
 		(stroke
@@ -2338,6 +2635,16 @@
 			(type default)
 		)
 		(uuid "d670b075-2bcc-4f6e-b022-8e1a44b936eb")
+	)
+	(wire
+		(pts
+			(xy 168.91 88.9) (xy 168.91 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e5ac2298-f85a-4edf-87b6-f45db13b7874")
 	)
 	(wire
 		(pts
@@ -2361,6 +2668,16 @@
 	)
 	(wire
 		(pts
+			(xy 166.37 90.17) (xy 162.56 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f1a52ecf-8c98-4a3f-9f5b-0c84f7f84820")
+	)
+	(wire
+		(pts
 			(xy 248.92 59.69) (xy 234.95 59.69)
 		)
 		(stroke
@@ -2370,8 +2687,20 @@
 		(uuid "fa318293-8ec6-46c5-84ff-6e65b8530f6f")
 	)
 	(rectangle
+		(start 142.24 78.74)
+		(end 214.63 133.35)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 57add6ce-8944-4524-97bb-09066d3ff737)
+	)
+	(rectangle
 		(start 12.7 78.74)
-		(end 196.85 133.35)
+		(end 142.24 133.35)
 		(stroke
 			(width 0)
 			(type default)
@@ -2407,13 +2736,23 @@
 	)
 	(text "Keys\n"
 		(exclude_from_sim no)
-		(at 102.362 125.73 0)
+		(at 79.502 124.714 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 		)
 		(uuid "06407f1d-6a4f-4ae8-b65c-13da509e7f67")
+	)
+	(text "Rotary Encoder\n"
+		(exclude_from_sim no)
+		(at 171.958 127.762 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "9b8e800f-86b5-4c92-8b05-749c4849604c")
 	)
 	(text "USB Port with ESD protection\n\n"
 		(exclude_from_sim no)
@@ -2425,7 +2764,30 @@
 		)
 		(uuid "e3923e68-5563-4e86-9891-cf120f3b71d2")
 	)
-	(global_label "PA1{slash}Space"
+	(global_label "PA1{slash}Rotary B"
+		(shape input)
+		(at 171.45 115.57 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 0 1)
+			)
+			(justify left)
+		)
+		(uuid "028ba0b5-2bd4-4d5d-9a06-25fde4f025ec")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 187.6189 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "PA1{slash}Key 3"
 		(shape input)
 		(at 115.57 93.98 0)
 		(fields_autoplaced yes)
@@ -2438,7 +2800,7 @@
 		)
 		(uuid "3a0b9c71-2f69-460f-897c-dade935b299f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 129.1385 93.98 0)
+			(at 128.9571 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2448,7 +2810,7 @@
 			)
 		)
 	)
-	(global_label "PA1{slash}Dot"
+	(global_label "PA1{slash}Key 5"
 		(shape input)
 		(at 82.55 106.68 0)
 		(fields_autoplaced yes)
@@ -2461,7 +2823,7 @@
 		)
 		(uuid "4eefc1ef-a79e-4941-9b5f-9a3f94122c1e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 93.5785 106.68 0)
+			(at 95.9371 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2494,7 +2856,30 @@
 			)
 		)
 	)
-	(global_label "PA1{slash}Enter"
+	(global_label "PA1{slash}Rotary A"
+		(shape input)
+		(at 166.37 115.57 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 0 1)
+			)
+			(justify right)
+		)
+		(uuid "53092269-8f56-4797-9cda-ee0ee1382949")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 150.3825 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "PA1{slash}Key 2"
 		(shape input)
 		(at 81.28 93.98 0)
 		(fields_autoplaced yes)
@@ -2507,7 +2892,7 @@
 		)
 		(uuid "581470d8-f1ea-4caf-ab7f-cdb2d5895a8e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 94.0623 93.98 0)
+			(at 94.6671 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2517,7 +2902,7 @@
 			)
 		)
 	)
-	(global_label "PA1{slash}Esc"
+	(global_label "PA1{slash}Key 1"
 		(shape input)
 		(at 46.99 93.98 0)
 		(fields_autoplaced yes)
@@ -2530,7 +2915,7 @@
 		)
 		(uuid "59aaf6ea-0014-4f92-9c56-9a1fdd78c8e1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 58.1395 93.98 0)
+			(at 60.3771 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2609,7 +2994,7 @@
 			)
 		)
 	)
-	(global_label "PA1{slash}Dash"
+	(global_label "PA1{slash}Key 6"
 		(shape input)
 		(at 116.84 106.68 0)
 		(fields_autoplaced yes)
@@ -2622,7 +3007,7 @@
 		)
 		(uuid "a90bf6b5-871d-414d-b16f-ba7ddc206204")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 129.3199 106.68 0)
+			(at 130.2271 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2655,9 +3040,9 @@
 			)
 		)
 	)
-	(global_label "PA1{slash}Caps Lock"
+	(global_label "PA1{slash}Key 4"
 		(shape input)
-		(at 149.86 93.98 0)
+		(at 45.72 105.41 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2668,7 +3053,7 @@
 		)
 		(uuid "bd04bbdc-f560-4fe8-a84f-294aec596991")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 167.6013 93.98 0)
+			(at 59.1071 105.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2697,6 +3082,29 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "PA1{slash}Rotary SW"
+		(shape input)
+		(at 168.91 88.9 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 0 0 0 1)
+			)
+			(justify left)
+		)
+		(uuid "f1f6fd13-7d3c-4f60-95f8-e01d2599dc88")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 186.4698 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 				(hide yes)
 			)
 		)
@@ -2840,7 +3248,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_Push")
-		(at 144.78 93.98 0)
+		(at 40.64 105.41 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2849,7 +3257,7 @@
 		(fields_autoplaced yes)
 		(uuid "0e0accac-4a14-4d54-8fde-40a0b3c03978")
 		(property "Reference" "SW4"
-			(at 144.78 86.36 0)
+			(at 40.64 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2857,7 +3265,7 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 144.78 88.9 0)
+			(at 40.64 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2865,7 +3273,7 @@
 			)
 		)
 		(property "Footprint" "CustomFootprints:SW_MX"
-			(at 144.78 88.9 0)
+			(at 40.64 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2874,7 +3282,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 144.78 88.9 0)
+			(at 40.64 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2883,7 +3291,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 144.78 93.98 0)
+			(at 40.64 105.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2908,7 +3316,7 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 134.62 92.71 0)
+		(at 30.48 104.14 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2917,7 +3325,7 @@
 		(fields_autoplaced yes)
 		(uuid "125bf7ec-1689-420f-946a-d3c4665e40f5")
 		(property "Reference" "#PWR035"
-			(at 134.62 96.52 0)
+			(at 30.48 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2926,7 +3334,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 134.62 87.63 0)
+			(at 30.48 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2934,7 +3342,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 134.62 92.71 0)
+			(at 30.48 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2943,7 +3351,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 134.62 92.71 0)
+			(at 30.48 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2952,7 +3360,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 134.62 92.71 0)
+			(at 30.48 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3039,6 +3447,141 @@
 		)
 	)
 	(symbol
+		(lib_id "CustomSymbols:EN11-HSM1BF20")
+		(at 156.21 102.87 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2fa48ef6-fcc4-42f7-a3b7-2b02223be39d")
+		(property "Reference" "J2"
+			(at 186.69 96.5514 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "EN11-HSM1BF20"
+			(at 186.69 99.0914 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "EN11HSM1BF20"
+			(at 177.8 192.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.8 292.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mechanical Encoder Rotary Incremental Flat 0.018N.m Straight Gray Digital Square Wave 20PPR Through Hole PC Pin"
+			(at 156.21 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "26.2"
+			(at 177.8 492.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "858-EN11-HSM1BF20"
+			(at 177.8 592.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/BI-Technologies-TT-Electronics/EN11-HSM1BF20?qs=%252BUYXD5bnyXp4Uf1MU7v3zw%3D%3D"
+			(at 177.8 692.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "TT Electronics"
+			(at 177.8 792.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "EN11-HSM1BF20"
+			(at 177.8 892.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(pin "MH2"
+			(uuid "af619b84-3dac-4562-af54-24a34831e226")
+		)
+		(pin "D1"
+			(uuid "dd61aa52-a39a-4588-9563-adbf24d93cd8")
+		)
+		(pin "E1"
+			(uuid "5d8180ba-4dfa-4e2c-b15c-db443074ea44")
+		)
+		(pin "A1"
+			(uuid "08688ac0-d5de-44f1-9f6b-a6d6c5fb1ab2")
+		)
+		(pin "C1"
+			(uuid "d1eacc36-f43e-46e8-baab-ccabd3070fa3")
+		)
+		(pin "MH1"
+			(uuid "0645f85b-1e3c-43b0-a1a7-adc4eaf6d42b")
+		)
+		(pin "B1"
+			(uuid "fe2e67a5-c772-44d5-8e37-5ae67378517d")
+		)
+		(instances
+			(project ""
+				(path "/8e7e72ac-bc91-4085-88f6-4508f4467c79"
+					(reference "J2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+3.3V")
 		(at 100.33 92.71 0)
 		(unit 1)
@@ -3099,6 +3642,75 @@
 			(project "projec"
 				(path "/8e7e72ac-bc91-4085-88f6-4508f4467c79"
 					(reference "#PWR034")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CustomSymbols:R_US")
+		(at 205.74 106.68 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3b19a566-a2a8-4ba6-805e-69b97e8e41f7")
+		(property "Reference" "R5"
+			(at 198.882 105.156 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1M"
+			(at 198.882 107.696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 206.756 106.934 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 205.74 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, US symbol"
+			(at 205.74 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "bd075d87-9918-4edf-98fd-f443d2a62405")
+		)
+		(pin "2"
+			(uuid "907c0bda-dcf0-449b-af37-c8996bb80f80")
+		)
+		(instances
+			(project "custom-keypad"
+				(path "/8e7e72ac-bc91-4085-88f6-4508f4467c79"
+					(reference "R5")
 					(unit 1)
 				)
 			)
@@ -3305,6 +3917,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+3.3V")
+		(at 162.56 88.9 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "53fe632e-6495-47bd-a490-8fad3975b10c")
+		(property "Reference" "#PWR046"
+			(at 162.56 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 162.56 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 162.56 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 162.56 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 162.56 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c0710a45-6ff5-49ec-ab3a-6e3b6f54cb97")
+		)
+		(instances
+			(project ""
+				(path "/8e7e72ac-bc91-4085-88f6-4508f4467c79"
+					(reference "#PWR046")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "CustomSymbols:USBLC6-2SC6")
 		(at 234.95 59.69 180)
 		(unit 1)
@@ -3431,6 +4109,75 @@
 			(project "projec"
 				(path "/8e7e72ac-bc91-4085-88f6-4508f4467c79"
 					(reference "IC2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "CustomSymbols:C")
+		(at 193.04 106.68 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5a567a04-fb3c-41df-b09d-1e6c19b46c5b")
+		(property "Reference" "C8"
+			(at 187.198 104.648 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2.2n"
+			(at 185.674 107.696 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
+			(at 194.0052 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 193.04 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 193.04 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ad66aaa1-c85b-4289-8424-c27b41e3f1a8")
+		)
+		(pin "2"
+			(uuid "a496f3d7-b186-4e82-a03e-aa213ce8c75a")
+		)
+		(instances
+			(project "custom-keypad"
+				(path "/8e7e72ac-bc91-4085-88f6-4508f4467c79"
+					(reference "C8")
 					(unit 1)
 				)
 			)
@@ -4236,6 +4983,138 @@
 		)
 	)
 	(symbol
+		(lib_id "CustomSymbols:GND")
+		(at 193.04 110.49 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e6d19d97-a234-4be1-993a-c60779bc9172")
+		(property "Reference" "#PWR043"
+			(at 193.04 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 193.04 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 193.04 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 193.04 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 193.04 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c38cdc4b-f3b5-4a4a-add4-6225e3660364")
+		)
+		(instances
+			(project "custom-keypad"
+				(path "/8e7e72ac-bc91-4085-88f6-4508f4467c79"
+					(reference "#PWR043")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 168.91 115.57 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e9805db8-94e0-4dfc-be43-81ddd516d9f0")
+		(property "Reference" "#PWR044"
+			(at 168.91 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 168.91 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 168.91 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 168.91 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 168.91 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "73750f7f-706a-4cfb-9584-819fb33a7db9")
+		)
+		(instances
+			(project ""
+				(path "/8e7e72ac-bc91-4085-88f6-4508f4467c79"
+					(reference "#PWR044")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Switch:SW_Push")
 		(at 111.76 106.68 0)
 		(unit 1)
@@ -4663,7 +5542,7 @@
 			)
 		)
 		(instances
-			(project "morse-code-keyboard"
+			(project "custom-keypad"
 				(path "/8e7e72ac-bc91-4085-88f6-4508f4467c79"
 					(page "2")
 				)

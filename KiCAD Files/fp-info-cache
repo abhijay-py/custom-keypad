@@ -1,4 +1,4 @@
-24654749609719260
+24656493989612653
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -55208,6 +55208,13 @@ Connector
 0
 6
 6
+CustomFootprints
+EN11HSM1BF20
+EN11-HSM1BF20-1
+Connector
+0
+7
+7
 CustomFootprints
 HDRV5W64P0X254_1X5_1270X254X854P
 61300511121-1

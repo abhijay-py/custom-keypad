@@ -431,7 +431,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "morse-code-keyboard.kicad_pro",
+    "filename": "custom-keypad.kicad_pro",
     "version": 1
   },
   "net_settings": {
