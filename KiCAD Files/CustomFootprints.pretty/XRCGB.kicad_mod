@@ -1,0 +1,248 @@
+(footprint "XRCGB"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(descr "XRCGB")
+	(tags "Crystal or Oscillator")
+	(property "Reference" "Y**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "40214aee-3830-46e3-846e-881cbf3c92ff")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Value" "XRCGB"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "2b851212-bc17-404c-84ab-264e425620aa")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "93fc0920-43ed-46f2-9c73-2eb6a741e87a")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "fc50a1cf-ccdf-4bd2-82dc-adceba8160e9")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f261554f-dd33-4189-83d9-0815727538eb")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -1.6 0.5)
+		(end -1.6 0.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "2d1a3a13-2ab6-475a-bd28-780cd2040c3e")
+	)
+	(fp_line
+		(start -1.5 0.5)
+		(end -1.5 0.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "8ac84fcb-944b-42e3-908f-24486f0ea65d")
+	)
+	(fp_arc
+		(start -1.6 0.5)
+		(mid -1.55 0.45)
+		(end -1.5 0.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "d2491930-a49f-4c27-a026-389af3ff865b")
+	)
+	(fp_arc
+		(start -1.5 0.5)
+		(mid -1.55 0.55)
+		(end -1.6 0.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "191ebae5-fbe6-45ee-a29b-4bbaa9fc2a64")
+	)
+	(fp_line
+		(start -2.05 -1.85)
+		(end 2.05 -1.85)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "6cfeaa21-5da9-4c54-8d5a-8cacf0367f95")
+	)
+	(fp_line
+		(start -2.05 1.85)
+		(end -2.05 -1.85)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "bca23a29-5c03-4212-9146-a06d1e12c078")
+	)
+	(fp_line
+		(start 2.05 -1.85)
+		(end 2.05 1.85)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "9dc97205-564d-4224-b7d5-c20739012a9e")
+	)
+	(fp_line
+		(start 2.05 1.85)
+		(end -2.05 1.85)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "ac442e3f-725b-4cae-a7d5-729e9188ca87")
+	)
+	(fp_line
+		(start -1 -0.8)
+		(end -1 0.8)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "e7b94996-face-418e-a59d-263d9b4360f1")
+	)
+	(fp_line
+		(start -1 0.8)
+		(end 1 0.8)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "88739461-0857-4821-9c8e-1e8d6df1f119")
+	)
+	(fp_line
+		(start 1 -0.8)
+		(end -1 -0.8)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "a2b1fb85-bb0a-49fc-9eb6-321511ce43c6")
+	)
+	(fp_line
+		(start 1 0.8)
+		(end 1 -0.8)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "b6b2e5ce-f927-4df8-9d0e-7fac87de94f0")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "cb775b5e-1cfc-4bd1-b410-5ab6986e0886")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -0.675 0.5 90)
+		(size 0.7 0.75)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "17a8ea71-f4ad-4072-9f43-0e1f71fc916f")
+	)
+	(pad "2" smd rect
+		(at 0.675 0.5 90)
+		(size 0.7 0.75)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "a0b7e9eb-705a-4908-bdbc-804056eb8e0d")
+	)
+	(pad "3" smd rect
+		(at 0.675 -0.5 90)
+		(size 0.7 0.75)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "041ae875-d4fd-4956-a936-4b2daf1a72c1")
+	)
+	(pad "4" smd rect
+		(at -0.675 -0.5 90)
+		(size 0.7 0.75)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(uuid "2a2cf34d-7b3b-4361-bbf8-3d3102dd6887")
+	)
+	(model "XRCGB25M000FAN00R0.stp"
+		(hide yes)
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+	(model "${KIPRJMOD}/3D Models/XRCGB25M000FAN00R0.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)
