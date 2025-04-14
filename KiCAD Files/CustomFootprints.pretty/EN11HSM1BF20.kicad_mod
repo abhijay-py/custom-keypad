@@ -274,26 +274,15 @@
 		(remove_unused_layers no)
 		(uuid "ce45659d-433e-4ebb-a05f-64c53286484d")
 	)
-	(model "EN11-HSM1BF20.stp"
-		(offset
-			(xyz 0 0 0)
-		)
-		(scale
-			(xyz 1 1 1)
-		)
-		(rotate
-			(xyz 0 0 0)
-		)
-	)
 	(model "${KIPRJMOD}/3D Models/EN11-HSM1BF20.stp"
 		(offset
-			(xyz 0 0 0)
+			(xyz 2.5 7.5 6.2)
 		)
 		(scale
 			(xyz 1 1 1)
 		)
 		(rotate
-			(xyz 0 0 0)
+			(xyz -90 0 0)
 		)
 	)
 )
