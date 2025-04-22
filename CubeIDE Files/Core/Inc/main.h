@@ -31,12 +31,12 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "usb_device.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
-typedef struct {
+typedef struct __attribute__((packed)){
 	uint8_t MODIFIER;
 	uint8_t RESERVED;
 	uint8_t KEYCODE1;
@@ -72,6 +72,7 @@ void Error_Handler(void);
 /* USER CODE BEGIN EFP */
 int write_pin(IC_Pin pin, int value);
 int read_pin(IC_Pin pin);
+uint8_t key_send(PCD_HandleTypeDef* usb, uint8_t modifier, uint8_t key_one, uint8_t key_two, uint8_t key_three, uint8_t key_four,  uint8_t key_five,  uint8_t key_six);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

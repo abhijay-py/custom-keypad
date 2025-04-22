@@ -74,6 +74,9 @@ const uint8_t f24 = 0x73;
 const uint8_t print_screen = 0x46;
 const uint8_t scroll_lock = 0x47;
 const uint8_t pause = 0x48;
+const uint8_t play_pause = 0xe8;
+const uint8_t prev_song = 0xea;
+const uint8_t next_song = 0xeb;
 const uint8_t insert = 0x49;
 const uint8_t start_line = 0x4A; //Known as home
 const uint8_t page_up = 0x4B;
@@ -83,7 +86,7 @@ const uint8_t page_down = 0x4E;
 
 //Special Characters
 const uint8_t dash_underscore = 0x2D;
-const uint8_t equals_plus = 0x2E
+const uint8_t equals_plus = 0x2E;
 const uint8_t right_brackets = 0x2F;
 const uint8_t left_brackets = 0x30;
 const uint8_t backslash_line = 0x31;
@@ -167,7 +170,6 @@ const uint8_t right_gui = 0x80; //Often FN key
 
 //Setup Variables
 extern USBD_HandleTypeDef hUsbDeviceHS;
-KeyboardReport keyboardOut = {0, 0, 0, 0, 0, 0, 0, 0};
 const IC_Pin KEY_ONE = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_5, .input = 1};
 const IC_Pin KEY_TWO = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_9, .input = 1};
 const IC_Pin KEY_THREE = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_0, .input = 1};
@@ -229,24 +231,31 @@ int main(void)
   MX_GPIO_Init();
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  keyboardOut.MODIFIER = 0x0;
+  int key_one, key_two, key_three, key_four, key_five, key_six, rotary_A, rotary_B, rotary_SW;
+  uint8_t modifier = 0x00;
   while (1)
   {
     /* USER CODE END WHILE */
-	  //Functions: Volume Up, Volume Down, Volume Mute, 6 Keys
-	  keyboardOut.KEYCODE1 = 0x0;
-	  keyboardOut.KEYCODE2 = 0x0;
-	  keyboardOut.KEYCODE3 = 0x0;
-	  keyboardOut.KEYCODE4 = 0x0;
-	  keyboardOut.KEYCODE5 = 0x0;
-	  keyboardOut.KEYCODE6 = 0x0;
-	  USBD_HID_SendReport(&hUsbDeviceHS, &keyboardOut, sizeof(keyboardOut));
+
     /* USER CODE BEGIN 3 */
+	  write_pin(DEBUG_ELEVEN, 1);
+	  if (hUsbDeviceHS.dev_state == USBD_STATE_CONFIGURED) {
+	      write_pin(DEBUG_TWELVE, 1);
+	  }
+	  KeyboardReport keyboardOut = {0, key_a, 0, 0, 0, 0, 0, 0};
+	  USBD_HID_SendReport(&hUsbDeviceHS, &keyboardOut, sizeof(keyboardOut));
+	  HAL_Delay(1000);
+	  write_pin(DEBUG_ELEVEN, 0);
+	  write_pin(DEBUG_TWELVE, 0);
+	  HAL_DELAY(500);
+//	  key_one = read_pin(KEY_ONE);
+//	  key_two = read_pin(KEY_TWO);
+//	  key_three = read_pin(KEY_THREE);
+//	  key_send(&hUsbDeviceHS, 0x00, key_one ? prev_song : 0x00, key_two ? play_pause : 0x00, key_three ? next_song : 0x00, 0x00, 0x00, 0x00);
   }
   /* USER CODE END 3 */
 }
@@ -276,20 +285,11 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI|RCC_OSCILLATORTYPE_HSE;
-  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI48|RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_DIV1;
   RCC_OscInitStruct.HSICalibrationValue = 64;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-  RCC_OscInitStruct.PLL.PLLM = 5;
-  RCC_OscInitStruct.PLL.PLLN = 48;
-  RCC_OscInitStruct.PLL.PLLP = 2;
-  RCC_OscInitStruct.PLL.PLLQ = 5;
-  RCC_OscInitStruct.PLL.PLLR = 2;
-  RCC_OscInitStruct.PLL.PLLRGE = RCC_PLL1VCIRANGE_2;
-  RCC_OscInitStruct.PLL.PLLVCOSEL = RCC_PLL1VCOWIDE;
-  RCC_OscInitStruct.PLL.PLLFRACN = 0;
+  RCC_OscInitStruct.HSI48State = RCC_HSI48_ON;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -352,11 +352,11 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PB15 PB3 PB4 */
-  GPIO_InitStruct.Pin = GPIO_PIN_15|GPIO_PIN_3|GPIO_PIN_4;
+  /*Configure GPIO pin : PA15 */
+  GPIO_InitStruct.Pin = GPIO_PIN_15;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PC11 PC12 */
   GPIO_InitStruct.Pin = GPIO_PIN_11|GPIO_PIN_12;
@@ -365,11 +365,28 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
+  /*Configure GPIO pins : PB3 PB4 */
+  GPIO_InitStruct.Pin = GPIO_PIN_3|GPIO_PIN_4;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
+uint8_t key_send(PCD_HandleTypeDef* usb, uint8_t modifier, uint8_t key_one, uint8_t key_two, uint8_t key_three, uint8_t key_four,  uint8_t key_five,  uint8_t key_six) {
+	KeyboardReport keyboardOut = {0, 0, 0, 0, 0, 0, 0, 0};
+	keyboardOut.MODIFIER = modifier;
+	keyboardOut.KEYCODE1 = key_one;
+	keyboardOut.KEYCODE2 = key_two;
+	keyboardOut.KEYCODE3 = key_three;
+	keyboardOut.KEYCODE4 = key_four;
+	keyboardOut.KEYCODE5 = key_five;
+	keyboardOut.KEYCODE6 = key_six;
+	USBD_HID_SendReport(usb, &keyboardOut, sizeof(keyboardOut));
+}
 int write_pin(IC_Pin pin, int value)
 {
 	if (pin.input == 1) {
