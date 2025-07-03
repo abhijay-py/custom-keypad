@@ -246,16 +246,20 @@ int main(void)
 	  if (hUsbDeviceHS.dev_state == USBD_STATE_CONFIGURED) {
 	      write_pin(DEBUG_TWELVE, 1);
 	  }
-	  KeyboardReport keyboardOut = {0, key_a, 0, 0, 0, 0, 0, 0};
-	  USBD_HID_SendReport(&hUsbDeviceHS, &keyboardOut, sizeof(keyboardOut));
-	  HAL_Delay(1000);
-	  write_pin(DEBUG_ELEVEN, 0);
-	  write_pin(DEBUG_TWELVE, 0);
-	  HAL_DELAY(500);
-//	  key_one = read_pin(KEY_ONE);
-//	  key_two = read_pin(KEY_TWO);
-//	  key_three = read_pin(KEY_THREE);
-//	  key_send(&hUsbDeviceHS, 0x00, key_one ? prev_song : 0x00, key_two ? play_pause : 0x00, key_three ? next_song : 0x00, 0x00, 0x00, 0x00);
+//	  KeyboardReport keyboardOut = {0, 0, key_a, 0, 0, 0, 0, 0};
+	  key_one = read_pin(KEY_ONE);
+	  key_two = read_pin(KEY_TWO);
+	  key_three = read_pin(KEY_THREE);
+	  key_four = read_pin(KEY_FOUR);
+	  key_five = read_pin(KEY_FIVE);
+	  key_six = read_pin(KEY_SIX);
+	  key_send(&hUsbDeviceHS, 0x00, key_one ? key_a : 0x00, key_two ? key_b : 0x00, key_three ? key_c : 0x00, key_four ? space : 0x00, key_five ? key_z : 0x00, key_six ? key_x : 0x00);
+//	  USBD_HID_SendReport(&hUsbDeviceHS, &keyboardOut, sizeof(keyboardOut));
+//	  HAL_Delay(1000);
+//	  write_pin(DEBUG_ELEVEN, 0);
+//	  write_pin(DEBUG_TWELVE, 0);
+//	  HAL_Delay(500);
+
   }
   /* USER CODE END 3 */
 }
