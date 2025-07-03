@@ -261,8 +261,7 @@ int main(void)
 	  rotary_B = read_pin(ROTARY_B);
 	  rotary_SW = read_pin(ROTARY_SWITCH);
 	  key_send(&hUsbDeviceHS, 0x00, key_one ? f15 : 0x00, key_two ? f13 : 0x00, key_three ? f14 : 0x00, key_four ? space : 0x00, key_five ? key_z : 0x00, key_six ? key_x : prev_rotary_SW != rotary_SW && rotary_SW? f16 : 0x00);
-
-	  HAL_Delay(100);
+	  HAL_Delay(15);
 //	  if (prev_rotary_SW != rotary_SW) {
 //
 //	  }
