@@ -235,15 +235,15 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int key_one, key_two, key_three, key_four, key_five, key_six, rotary_A, rotary_B, rotary_SW, prev_rotary_A, prev_rotary_B, prev_rotary_SW, mute_active;
-  int first_loop = 1;
+  int key_one, key_two, key_three, key_four, key_five, key_six, rotary_A, rotary_B, rotary_SW, prev_rotary_A, prev_rotary_B, prev_rotary_SW, volume_up_b, volume_down_b;
+  uint8_t last_send;
   uint8_t modifier = 0x00;
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  write_pin(DEBUG_ELEVEN, 1);
+
 	  if (hUsbDeviceHS.dev_state == USBD_STATE_CONFIGURED) {
 	      write_pin(DEBUG_TWELVE, 1);
 	  }
@@ -260,8 +260,19 @@ int main(void)
 	  rotary_A = read_pin(ROTARY_A);
 	  rotary_B = read_pin(ROTARY_B);
 	  rotary_SW = read_pin(ROTARY_SWITCH);
-	  key_send(&hUsbDeviceHS, 0x00, key_one ? f15 : 0x00, key_two ? f13 : 0x00, key_three ? f14 : 0x00, key_four ? space : 0x00, key_five ? key_z : 0x00, key_six ? key_x : prev_rotary_SW != rotary_SW && rotary_SW? f16 : 0x00);
+	  volume_up_b = (rotary_A != prev_rotary_A && rotary_A == rotary_B) || (rotary_B != prev_rotary_B && rotary_B != rotary_A);
+	  volume_down_b = (rotary_A != prev_rotary_A && rotary_A != rotary_B) || (rotary_B != prev_rotary_B && rotary_B == rotary_A);
+	  last_send = key_six ? key_x : ((prev_rotary_SW != rotary_SW && rotary_SW) ? f16 : (volume_up_b ? f17 : (volume_down_b ? f18 : 0x00)));
+	  key_send(&hUsbDeviceHS, 0x00, key_one ? f15 : 0x00, key_two ? f13 : 0x00, key_three ? f14 : 0x00, key_four ? space : 0x00, key_five ? key_z : 0x00, last_send);
+	  write_pin(DEBUG_TWELVE, 0);
 	  HAL_Delay(15);
+	  if (key_one || key_two || key_three || key_four || key_five || key_six || rotary_SW || volume_up_b || volume_down_b) {
+		  write_pin(DEBUG_ELEVEN, 1);
+	  }
+	  else {
+		  write_pin(DEBUG_ELEVEN, 0);
+	  }
+
 //	  if (prev_rotary_SW != rotary_SW) {
 //
 //	  }
