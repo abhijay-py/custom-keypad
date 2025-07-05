@@ -247,7 +247,7 @@ int main(void)
 	  if (hUsbDeviceHS.dev_state == USBD_STATE_CONFIGURED) {
 	      write_pin(DEBUG_TWELVE, 1);
 	  }
-//	  KeyboardReport keyboardOut = {0, 0, key_a, 0, 0, 0, 0, 0};
+
 	  prev_rotary_A = rotary_A;
 	  prev_rotary_B = rotary_B;
 	  prev_rotary_SW = rotary_SW;
@@ -276,27 +276,6 @@ int main(void)
 		  write_pin(DEBUG_ELEVEN, 0);
 	  }
 
-//	  if (prev_rotary_SW != rotary_SW) {
-//
-//	  }
-//	  else {
-//		  if (rotary_A != prev_rotary_A) {
-//			  if (rotary_A == rotary_B) {
-//				  key_send(&hUsbDeviceHS, 0x00, f17, 0x00, 0x00, 0x00, 0x00, 0x00); //Volume Up
-//			  }
-//			  else {
-//				  key_send(&hUsbDeviceHS, 0x00, f18, 0x00, 0x00, 0x00, 0x00, 0x00); //Volume Down
-//			  }
-//		  }
-//		  else if (rotary_B != prev_rotary_B) {
-//			  if (rotary_A == rotary_B) {
-//				  key_send(&hUsbDeviceHS, 0x00, f18, 0x00, 0x00, 0x00, 0x00, 0x00); //Volume Down
-//			  }
-//			  else {
-//				  key_send(&hUsbDeviceHS, 0x00, f18, 0x00, 0x00, 0x00, 0x00, 0x00); //Volume Up
-//			  }
-//		  }
-//	  }
 //	  HAL_Delay(100);
 //	  USBD_HID_SendReport(&hUsbDeviceHS, &keyboardOut, sizeof(keyboardOut));
 //	  HAL_Delay(1000);
