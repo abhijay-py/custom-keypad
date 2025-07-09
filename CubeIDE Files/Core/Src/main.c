@@ -262,13 +262,13 @@ int main(void)
 	  if (key_two && !prev_key_two) {
 		  USBD_HID_SendReport(&hUsbDeviceHS, &report_play, sizeof(report_play));
 	  }
-	  if (key_one && !prev_key_one) {
+	  else if (key_one && !prev_key_one) {
 		  USBD_HID_SendReport(&hUsbDeviceHS, &report_prev, sizeof(report_prev));
 	  }
-	  if (key_three && !prev_key_three) {
+	  else if (key_three && !prev_key_three) {
 	      USBD_HID_SendReport(&hUsbDeviceHS, &report_next, sizeof(report_next));
 	  }
-	  if (prev_rotary_SW != rotary_SW && rotary_SW) {
+	  else if (prev_rotary_SW != rotary_SW && rotary_SW) {
 		  USBD_HID_SendReport(&hUsbDeviceHS, &report_volmute, sizeof(report_volmute));
 	  }
 	  else if (volume_up_b) {
@@ -278,12 +278,12 @@ int main(void)
 		  USBD_HID_SendReport(&hUsbDeviceHS, &report_voldown, sizeof(report_voldown));
 	  }
 	  USBD_HID_SendReport(&hUsbDeviceHS, &blank_rep, sizeof(blank_rep));
-	  HAL_Delay(15);
+	  HAL_Delay(10);
 	  key_four = read_pin(KEY_FOUR);
 	  key_five = read_pin(KEY_FIVE);
 	  key_six = read_pin(KEY_SIX);
 	  key_send(&hUsbDeviceHS, 0x00, key_four ? space : 0x00, key_five ? key_z : 0x00, key_six ? key_x : 0x00, 0x00, 0x00, 0x00);
-	  HAL_Delay(15);
+	  HAL_Delay(10);
 	  key_send(&hUsbDeviceHS, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
 	  write_pin(DEBUG_TWELVE, 0);
 	  HAL_Delay(15);
