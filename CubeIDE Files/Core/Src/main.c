@@ -182,6 +182,15 @@ const IC_Pin ROTARY_B = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_4, .in
 const IC_Pin DEBUG_ELEVEN = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_11, .input = 0};
 const IC_Pin DEBUG_TWELVE = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_12, .input = 0};
 
+
+volatile int32_t encoder_pos = 0;
+static uint8_t prev_state = 0;
+static const int8_t decode_table[4][4] = {
+    {  0, +1, -1,  0 },
+    { -1,  0,  0, +1 },
+    { +1,  0,  0, -1 },
+    {  0, -1, +1,  0 }
+};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -235,9 +244,15 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int key_one, key_two, key_three, key_four, key_five, key_six, rotary_A, rotary_B, rotary_SW, prev_rotary_A, prev_rotary_B, prev_rotary_SW, volume_up_b, volume_down_b, prev_key_two,  prev_key_one, prev_key_three;
+  int key_one, key_two, key_three, key_four, key_five, key_six, rotary_SW, prev_rotary_SW, volume_up_b, volume_down_b, prev_key_two,  prev_key_one, prev_key_three;
   uint8_t last_send;
   uint8_t modifier = 0x00;
+  int last_pos = 0;
+  prev_rotary_SW = 0;
+  prev_key_two = 0;
+  prev_key_one = 0;
+  prev_key_three = 0;
+  int delta = 0;
   while (1)
   {
     /* USER CODE END WHILE */
@@ -248,25 +263,32 @@ int main(void)
 	      write_pin(DEBUG_TWELVE, 1);
 	  }
 
-	  prev_rotary_A = rotary_A;
-	  prev_rotary_B = rotary_B;
-	  prev_rotary_SW = rotary_SW;
-	  prev_key_one = key_one;
-	  prev_key_three = key_three;
-	  prev_key_two = key_two;
 	  key_one = read_pin(KEY_ONE);
 	  key_two = read_pin(KEY_TWO);
 	  key_three = read_pin(KEY_THREE);
 	  key_four = read_pin(KEY_FOUR);
 	  key_five = read_pin(KEY_FIVE);
 	  key_six = read_pin(KEY_SIX);
-	  rotary_A = read_pin(ROTARY_A);
-	  rotary_B = read_pin(ROTARY_B);
 	  rotary_SW = read_pin(ROTARY_SWITCH);
-	  volume_up_b = (rotary_A != prev_rotary_A && rotary_A == rotary_B) || (rotary_B != prev_rotary_B && rotary_B != rotary_A);
-	  volume_down_b = (rotary_A != prev_rotary_A && rotary_A != rotary_B) || (rotary_B != prev_rotary_B && rotary_B == rotary_A);
-	  last_send = key_six ? key_x : ((prev_rotary_SW != rotary_SW && rotary_SW) ? f16 : (volume_up_b ? f17 : (volume_down_b ? f18 : 0x00)));
-	  key_send(&hUsbDeviceHS, 0x00, key_one && !prev_key_one ? f15 : 0x00, key_two && !prev_key_two ? f13 : 0x00, key_three && !prev_key_three? f14 : 0x00, key_four ? space : 0x00, key_five ? key_z : 0x00, last_send);
+	  delta = encoder_pos - last_pos;
+
+	  if (delta >= 3) {
+		  volume_up_b = 1;
+		  volume_down_b = 0;
+		  last_pos += 3;
+	  }
+	  else if (delta <= -3) {
+		  volume_up_b = 0;
+		  volume_down_b = 1;
+		  last_pos -= 3;
+	  }
+	  else {
+		  volume_up_b = 0;
+		  volume_down_b = 0;
+	  }
+
+	  last_send = key_six ? key_d : ((prev_rotary_SW != rotary_SW && rotary_SW) ? key_q : (volume_up_b ? key_z : (volume_down_b ? key_x : 0x00)));
+	  key_send(&hUsbDeviceHS, 0x00, key_one ? space : 0x00, key_two ? key_w : 0x00, key_three ? key_e : 0x00, key_four ? key_a : 0x00, key_five ? key_s : 0x00, last_send);
 	  write_pin(DEBUG_TWELVE, 0);
 	  HAL_Delay(15);
 	  if (key_one || key_two || key_three || key_four || key_five || key_six || rotary_SW || volume_up_b || volume_down_b) {
@@ -275,6 +297,10 @@ int main(void)
 	  else {
 		  write_pin(DEBUG_ELEVEN, 0);
 	  }
+	  prev_rotary_SW = rotary_SW;
+	  prev_key_one = key_one;
+	  prev_key_three = key_three;
+	  prev_key_two = key_two;
 
 //	  HAL_Delay(100);
 //	  USBD_HID_SendReport(&hUsbDeviceHS, &keyboardOut, sizeof(keyboardOut));
@@ -361,8 +387,8 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11|GPIO_PIN_12, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin : PA6 */
-  GPIO_InitStruct.Pin = GPIO_PIN_6;
+  /*Configure GPIO pins : PA6 PA15 */
+  GPIO_InitStruct.Pin = GPIO_PIN_6|GPIO_PIN_15;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
@@ -379,12 +405,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PA15 */
-  GPIO_InitStruct.Pin = GPIO_PIN_15;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
   /*Configure GPIO pins : PC11 PC12 */
   GPIO_InitStruct.Pin = GPIO_PIN_11|GPIO_PIN_12;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -394,15 +414,38 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pins : PB3 PB4 */
   GPIO_InitStruct.Pin = GPIO_PIN_3|GPIO_PIN_4;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI3_IRQn, 1, 0);
+  HAL_NVIC_EnableIRQ(EXTI3_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI4_IRQn, 1, 0);
+  HAL_NVIC_EnableIRQ(EXTI4_IRQn);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
+void encoder_update(void) {
+    uint8_t a = read_pin(ROTARY_A);
+    uint8_t b = read_pin(ROTARY_B);
+    uint8_t curr_state = (a << 1) | b;
+
+    encoder_pos += decode_table[prev_state][curr_state];
+    prev_state = curr_state;
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
+	if (GPIO_Pin == GPIO_PIN_3 || GPIO_Pin == GPIO_PIN_4) {
+		encoder_update();
+	}
+}
+
+
 uint8_t key_send(PCD_HandleTypeDef* usb, uint8_t modifier, uint8_t key_one, uint8_t key_two, uint8_t key_three, uint8_t key_four,  uint8_t key_five,  uint8_t key_six) {
 	KeyboardReport keyboardOut = {0, 0, 0, 0, 0, 0, 0, 0};
 	keyboardOut.MODIFIER = modifier;

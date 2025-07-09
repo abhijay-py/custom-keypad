@@ -217,10 +217,9 @@ __ALIGN_BEGIN static uint8_t USBD_HID_DeviceQualifierDesc[USB_LEN_DEV_QUALIFIER_
 };
 #endif /* USE_USBD_COMPOSITE  */
 
-
 __ALIGN_BEGIN static uint8_t HID_MOUSE_ReportDesc[HID_MOUSE_REPORT_DESC_SIZE] __ALIGN_END =
 {
-		    0x05, 0x01,                    // USAGE_PAGE (Generic Desktop)
+		0x05, 0x01,                    // USAGE_PAGE (Generic Desktop)
 		    0x09, 0x06,                    // USAGE (Keyboard)
 		    0xa1, 0x01,                    // COLLECTION (Application)
 		    0x05, 0x07,                    //   USAGE_PAGE (Keyboard)
@@ -246,13 +245,13 @@ __ALIGN_BEGIN static uint8_t HID_MOUSE_ReportDesc[HID_MOUSE_REPORT_DESC_SIZE] __
 		    0x95, 0x06,                    //   REPORT_COUNT (6)
 		    0x75, 0x08,                    //   REPORT_SIZE (8)
 		    0x15, 0x00,                    //   LOGICAL_MINIMUM (0)
-		    0x25, 0x73,                    //   LOGICAL_MAXIMUM (101)
+		    0x25, 0x65,                    //   LOGICAL_MAXIMUM (101)
 		    0x05, 0x07,                    //   USAGE_PAGE (Keyboard)
 		    0x19, 0x00,                    //   USAGE_MINIMUM (Reserved (no event indicated))
-		    0x29, 0x73,                    //   USAGE_MAXIMUM (Keyboard Application)
+		    0x29, 0x65,                    //   USAGE_MAXIMUM (Keyboard Application)
 		    0x81, 0x00,                    //   INPUT (Data,Ary,Abs)
 		    0xc0                           // END_COLLECTION
-		};
+};
 
 static uint8_t HIDInEpAdd = HID_EPIN_ADDR;
 
