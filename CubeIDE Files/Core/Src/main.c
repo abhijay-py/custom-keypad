@@ -121,7 +121,6 @@ const uint8_t play_pause = 0xcd;
 const uint8_t prev_song = 0xb6;
 const uint8_t next_song = 0xb5;
 
-
 //Keyboard Modifier Constants (or/and to clear)
 const uint8_t left_ctrl = 0x01;
 const uint8_t left_shift = 0x02;
@@ -209,13 +208,15 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int key_one, key_two, key_three, key_four, key_five, key_six, rotary_SW, prev_rotary_SW, volume_up_b, volume_down_b, prev_key_two,  prev_key_one, prev_key_three;
+  int key_one, key_two, key_three, key_four, key_five, key_six, rotary_SW, prev_rotary_SW, volume_up_b, volume_down_b, prev_key_two,  prev_key_one, prev_key_three, prev_key_four, prev_key_five, prev_key_six;
   uint8_t report_volup[] = {0x02, volume_up, 0x00};
   uint8_t report_voldown[] = {0x02, volume_down, 0x00};
   uint8_t report_volmute[] = {0x02, volume_mute, 0x00};
   uint8_t report_play[] = {0x02, play_pause, 0x00};
   uint8_t report_next[] = {0x02, next_song, 0x00};
   uint8_t report_prev[] = {0x02, prev_song, 0x00};
+  uint8_t report_rewind[] = {0x02, rewind_track, 0x00};
+  uint8_t report_ff[] = {0x02, fast_forward, 0x00};
   uint8_t blank_rep[] = {0x02, 0x00, 0x00};
   uint8_t last_send;
   uint8_t modifier = 0x00;
@@ -223,6 +224,9 @@ int main(void)
   prev_rotary_SW = 0;
   prev_key_two = 0;
   prev_key_one = 0;
+  prev_key_four = 0;
+  prev_key_six = 0;
+  prev_key_five = 0;
   prev_key_three = 0;
   int delta = 0;
   while (1)
@@ -277,6 +281,7 @@ int main(void)
 	  else if (volume_down_b) {
 		  USBD_HID_SendReport(&hUsbDeviceHS, &report_voldown, sizeof(report_voldown));
 	  }
+
 	  USBD_HID_SendReport(&hUsbDeviceHS, &blank_rep, sizeof(blank_rep));
 	  HAL_Delay(10);
 	  key_four = read_pin(KEY_FOUR);
@@ -297,6 +302,9 @@ int main(void)
 	  prev_key_one = key_one;
 	  prev_key_three = key_three;
 	  prev_key_two = key_two;
+	  prev_key_four = key_four;
+	  prev_key_five = key_five;
+	  prev_key_six = key_six;
 
 //	  HAL_Delay(100);
 //	  USBD_HID_SendReport(&hUsbDeviceHS, &keyboardOut, sizeof(keyboardOut));
