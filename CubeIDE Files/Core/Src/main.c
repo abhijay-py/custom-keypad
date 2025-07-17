@@ -57,12 +57,12 @@ const uint8_t f9 = 0x42;
 const uint8_t f10 = 0x43;
 const uint8_t f11 = 0x44;
 const uint8_t f12 = 0x45;
-const uint8_t f13 = 0x68;//Play/pause hotkey
-const uint8_t f14 = 0x69;//skip hotkey
-const uint8_t f15 = 0x6A;//prev song hotkey
-const uint8_t f16 = 0x6B;//mute hotkey
-const uint8_t f17 = 0x6C;//volume up hotkey
-const uint8_t f18 = 0x6D;//volume down hotkey
+const uint8_t f13 = 0x68;
+const uint8_t f14 = 0x69;
+const uint8_t f15 = 0x6A;
+const uint8_t f16 = 0x6B;
+const uint8_t f17 = 0x6C;
+const uint8_t f18 = 0x6D;
 const uint8_t f19 = 0x6E;
 const uint8_t f20 = 0x6F;
 const uint8_t f21 = 0x70;
@@ -70,46 +70,8 @@ const uint8_t f22 = 0x71;
 const uint8_t f23 = 0x72;
 const uint8_t f24 = 0x73;
 
-//Special Keys
-const uint8_t print_screen = 0x46;
-const uint8_t scroll_lock = 0x47;
-const uint8_t pause = 0x48;
-//const uint8_t play_pause = 0xe8;
-//const uint8_t prev_song = 0xea;
-//const uint8_t next_song = 0xeb;
-const uint8_t insert = 0x49;
-const uint8_t start_line = 0x4A; //Known as home
-const uint8_t page_up = 0x4B;
-const uint8_t delete = 0x4C;
-const uint8_t end_line = 0x4D; //Known as end
-const uint8_t page_down = 0x4E;
-
-//Special Characters
-const uint8_t dash_underscore = 0x2D;
-const uint8_t equals_plus = 0x2E;
-const uint8_t right_brackets = 0x2F;
-const uint8_t left_brackets = 0x30;
-const uint8_t backslash_line = 0x31;
-const uint8_t semi_colon = 0x33;
-const uint8_t quotes = 0x34;
-const uint8_t accent_tilde = 0x35;
-const uint8_t comma_less_than = 0x36;
-const uint8_t period_greater_than = 0x37;
-const uint8_t forward_slash_question = 0x38;
-
 //Special Options
-const uint8_t enter = 0x28;
-const uint8_t esc = 0x29;
-const uint8_t backspace = 0x2A;
-const uint8_t tab = 0x2B;
 const uint8_t space = 0x2C;
-const uint8_t caps_lock = 0x39;
-
-//Arrow Keys
-const uint8_t right_arrow = 0x4F;
-const uint8_t left_arrow = 0x50;
-const uint8_t down_arrow = 0x51;
-const uint8_t up_arrow = 0x52;
 
 //Numbers
 const uint8_t exclaim_one = 0x1E;
@@ -151,11 +113,13 @@ const uint8_t key_x = 0x1B;
 const uint8_t key_y = 0x1C;
 const uint8_t key_z = 0x1D;
 
-//Volume
-//const uint8_t volume_mute = 0x7F;
-//const uint8_t volume_up = 0x80;
-//const uint8_t volume_down = 0x81;
-
+//Consumer Report
+const uint8_t volume_mute = 0xe2;
+const uint8_t volume_up = 0xe9;
+const uint8_t volume_down = 0xea;
+const uint8_t play_pause = 0xcd;
+const uint8_t prev_song = 0xb6;
+const uint8_t next_song = 0xb5;
 
 //Keyboard Modifier Constants (or/and to clear)
 const uint8_t left_ctrl = 0x01;
@@ -182,6 +146,15 @@ const IC_Pin ROTARY_B = (IC_Pin){.pin_letter = GPIOB, .pin_num = GPIO_PIN_4, .in
 const IC_Pin DEBUG_ELEVEN = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_11, .input = 0};
 const IC_Pin DEBUG_TWELVE = (IC_Pin){.pin_letter = GPIOC, .pin_num = GPIO_PIN_12, .input = 0};
 
+
+volatile int32_t encoder_pos = 0;
+static uint8_t prev_state = 0;
+static const int8_t decode_table[4][4] = {
+    {  0, +1, -1,  0 },
+    { -1,  0,  0, +1 },
+    { +1,  0,  0, -1 },
+    {  0, -1, +1,  0 }
+};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -235,9 +208,25 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int key_one, key_two, key_three, key_four, key_five, key_six, rotary_A, rotary_B, rotary_SW, prev_rotary_A, prev_rotary_B, prev_rotary_SW, volume_up_b, volume_down_b, prev_key_two,  prev_key_one, prev_key_three;
+  int key_one, key_two, key_three, key_four, key_five, key_six, rotary_SW, prev_rotary_SW, volume_up_b, volume_down_b, prev_key_two,  prev_key_one, prev_key_three, prev_key_four, prev_key_five, prev_key_six;
+  uint8_t report_volup[] = {0x02, volume_up, 0x00};
+  uint8_t report_voldown[] = {0x02, volume_down, 0x00};
+  uint8_t report_volmute[] = {0x02, volume_mute, 0x00};
+  uint8_t report_play[] = {0x02, play_pause, 0x00};
+  uint8_t report_next[] = {0x02, next_song, 0x00};
+  uint8_t report_prev[] = {0x02, prev_song, 0x00};
+  uint8_t blank_rep[] = {0x02, 0x00, 0x00};
   uint8_t last_send;
   uint8_t modifier = 0x00;
+  int last_pos = 0;
+  prev_rotary_SW = 0;
+  prev_key_two = 0;
+  prev_key_one = 0;
+  prev_key_four = 0;
+  prev_key_six = 0;
+  prev_key_five = 0;
+  prev_key_three = 0;
+  int delta = 0;
   while (1)
   {
     /* USER CODE END WHILE */
@@ -248,25 +237,57 @@ int main(void)
 	      write_pin(DEBUG_TWELVE, 1);
 	  }
 
-	  prev_rotary_A = rotary_A;
-	  prev_rotary_B = rotary_B;
-	  prev_rotary_SW = rotary_SW;
-	  prev_key_one = key_one;
-	  prev_key_three = key_three;
-	  prev_key_two = key_two;
 	  key_one = read_pin(KEY_ONE);
 	  key_two = read_pin(KEY_TWO);
 	  key_three = read_pin(KEY_THREE);
+
+	  rotary_SW = read_pin(ROTARY_SWITCH);
+	  delta = encoder_pos - last_pos;
+
+	  if (delta >= 3) {
+		  volume_up_b = 1;
+		  volume_down_b = 0;
+		  last_pos += 3;
+	  }
+	  else if (delta <= -3) {
+		  volume_up_b = 0;
+		  volume_down_b = 1;
+		  last_pos -= 3;
+	  }
+	  else {
+		  volume_up_b = 0;
+		  volume_down_b = 0;
+	  }
+//	  if (volume_down_b) {
+//		  USBD_HID_SendReport(&hUsbDeviceHS, &report_vol, sizeof(report_vol));
+//	  }
+	  if (key_two && !prev_key_two) {
+		  USBD_HID_SendReport(&hUsbDeviceHS, &report_play, sizeof(report_play));
+	  }
+	  else if (key_one && !prev_key_one) {
+		  USBD_HID_SendReport(&hUsbDeviceHS, &report_prev, sizeof(report_prev));
+	  }
+	  else if (key_three && !prev_key_three) {
+	      USBD_HID_SendReport(&hUsbDeviceHS, &report_next, sizeof(report_next));
+	  }
+	  else if (prev_rotary_SW != rotary_SW && rotary_SW) {
+		  USBD_HID_SendReport(&hUsbDeviceHS, &report_volmute, sizeof(report_volmute));
+	  }
+	  else if (volume_up_b) {
+		  USBD_HID_SendReport(&hUsbDeviceHS, &report_volup, sizeof(report_volup));
+	  }
+	  else if (volume_down_b) {
+		  USBD_HID_SendReport(&hUsbDeviceHS, &report_voldown, sizeof(report_voldown));
+	  }
+
+	  USBD_HID_SendReport(&hUsbDeviceHS, &blank_rep, sizeof(blank_rep));
+	  HAL_Delay(10);
 	  key_four = read_pin(KEY_FOUR);
 	  key_five = read_pin(KEY_FIVE);
 	  key_six = read_pin(KEY_SIX);
-	  rotary_A = read_pin(ROTARY_A);
-	  rotary_B = read_pin(ROTARY_B);
-	  rotary_SW = read_pin(ROTARY_SWITCH);
-	  volume_up_b = (rotary_A != prev_rotary_A && rotary_A == rotary_B) || (rotary_B != prev_rotary_B && rotary_B != rotary_A);
-	  volume_down_b = (rotary_A != prev_rotary_A && rotary_A != rotary_B) || (rotary_B != prev_rotary_B && rotary_B == rotary_A);
-	  last_send = key_six ? key_x : ((prev_rotary_SW != rotary_SW && rotary_SW) ? f16 : (volume_up_b ? f17 : (volume_down_b ? f18 : 0x00)));
-	  key_send(&hUsbDeviceHS, 0x00, key_one && !prev_key_one ? f15 : 0x00, key_two && !prev_key_two ? f13 : 0x00, key_three && !prev_key_three? f14 : 0x00, key_four ? space : 0x00, key_five ? key_z : 0x00, last_send);
+	  key_send(&hUsbDeviceHS, 0x00, key_four ? space : 0x00, key_five ? key_z : 0x00, key_six ? key_x : 0x00, 0x00, 0x00, 0x00);
+	  HAL_Delay(10);
+	  key_send(&hUsbDeviceHS, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
 	  write_pin(DEBUG_TWELVE, 0);
 	  HAL_Delay(15);
 	  if (key_one || key_two || key_three || key_four || key_five || key_six || rotary_SW || volume_up_b || volume_down_b) {
@@ -275,6 +296,13 @@ int main(void)
 	  else {
 		  write_pin(DEBUG_ELEVEN, 0);
 	  }
+	  prev_rotary_SW = rotary_SW;
+	  prev_key_one = key_one;
+	  prev_key_three = key_three;
+	  prev_key_two = key_two;
+	  prev_key_four = key_four;
+	  prev_key_five = key_five;
+	  prev_key_six = key_six;
 
 //	  HAL_Delay(100);
 //	  USBD_HID_SendReport(&hUsbDeviceHS, &keyboardOut, sizeof(keyboardOut));
@@ -361,8 +389,8 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11|GPIO_PIN_12, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin : PA6 */
-  GPIO_InitStruct.Pin = GPIO_PIN_6;
+  /*Configure GPIO pins : PA6 PA15 */
+  GPIO_InitStruct.Pin = GPIO_PIN_6|GPIO_PIN_15;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
@@ -379,12 +407,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PA15 */
-  GPIO_InitStruct.Pin = GPIO_PIN_15;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
   /*Configure GPIO pins : PC11 PC12 */
   GPIO_InitStruct.Pin = GPIO_PIN_11|GPIO_PIN_12;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -394,25 +416,41 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pins : PB3 PB4 */
   GPIO_InitStruct.Pin = GPIO_PIN_3|GPIO_PIN_4;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI3_IRQn, 1, 0);
+  HAL_NVIC_EnableIRQ(EXTI3_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI4_IRQn, 1, 0);
+  HAL_NVIC_EnableIRQ(EXTI4_IRQn);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
+void encoder_update(void) {
+    uint8_t a = read_pin(ROTARY_A);
+    uint8_t b = read_pin(ROTARY_B);
+    uint8_t curr_state = (a << 1) | b;
+
+    encoder_pos += decode_table[prev_state][curr_state];
+    prev_state = curr_state;
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
+	if (GPIO_Pin == GPIO_PIN_3 || GPIO_Pin == GPIO_PIN_4) {
+		encoder_update();
+	}
+}
+
+
 uint8_t key_send(PCD_HandleTypeDef* usb, uint8_t modifier, uint8_t key_one, uint8_t key_two, uint8_t key_three, uint8_t key_four,  uint8_t key_five,  uint8_t key_six) {
-	KeyboardReport keyboardOut = {0, 0, 0, 0, 0, 0, 0, 0};
-	keyboardOut.MODIFIER = modifier;
-	keyboardOut.KEYCODE1 = key_one;
-	keyboardOut.KEYCODE2 = key_two;
-	keyboardOut.KEYCODE3 = key_three;
-	keyboardOut.KEYCODE4 = key_four;
-	keyboardOut.KEYCODE5 = key_five;
-	keyboardOut.KEYCODE6 = key_six;
-	USBD_HID_SendReport(usb, &keyboardOut, sizeof(keyboardOut));
+	uint8_t reportKey[] = {0x01, modifier, 0x00, key_one, key_two, key_three, key_four, key_five, key_six};
+	USBD_HID_SendReport(usb, &reportKey, sizeof(reportKey));
 }
 int write_pin(IC_Pin pin, int value)
 {

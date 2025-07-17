@@ -133,7 +133,6 @@
 #define USBD_DbgLog(...)
 #endif /* (USBD_DEBUG_LEVEL > 2U) */
 
-
 /**
   * @}
   */
