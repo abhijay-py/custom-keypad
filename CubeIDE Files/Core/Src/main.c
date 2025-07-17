@@ -215,8 +215,6 @@ int main(void)
   uint8_t report_play[] = {0x02, play_pause, 0x00};
   uint8_t report_next[] = {0x02, next_song, 0x00};
   uint8_t report_prev[] = {0x02, prev_song, 0x00};
-  uint8_t report_rewind[] = {0x02, rewind_track, 0x00};
-  uint8_t report_ff[] = {0x02, fast_forward, 0x00};
   uint8_t blank_rep[] = {0x02, 0x00, 0x00};
   uint8_t last_send;
   uint8_t modifier = 0x00;
